@@ -44,8 +44,9 @@ class SearchForm extends Component {
   }
 
   _onSubmit = (event) => {
+    const { query } = this.state;
     event.preventDefault();
-    this.props.onSearch();
+    this.props.onSearch(query);
   }
 }
 

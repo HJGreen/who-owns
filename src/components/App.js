@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { dnsLookup } from '../lib/lookup';
 
 import Well from './Well';
 import ActionBar from './ActionBar';
 import SearchForm from './search/SearchForm';
+import Results from './results/Results';
 
 const Main = styled.main`
   display: flex;
@@ -23,14 +25,12 @@ const PageTitle = styled.h1`
   margin-bottom: 2rem;
 `;
 
-const Results = styled.section`
+const ResultsContainer = styled.section`
   max-height: ${props => props.expanded ? '50vh' : '0'}
-  transition: max-height 0.5s ease-out 0.4s;
+  transition: max-height 0.3s ease-out 0.35s;
+  padding: ${props => props.expanded ? '16px' : '0'};
 `;
 
-const ResultsInner = styled.section`
-  height: 50vh;
-`;
 
 class App extends Component {
   state = {
@@ -38,28 +38,35 @@ class App extends Component {
     fetching: false,
   }
   render() {
-    const { displayResults, fetching } = this.state;
+    const { displayResults, fetching, results } = this.state;
     return (
       <Main>
         <PageTitle shrink={displayResults}>Who Owns</PageTitle>
         <Well>
           <ActionBar expanded={displayResults}>
-            <SearchForm style={{ width: '80vw' }} onSearch={this._onSearch} fetching={fetching} />
+            <SearchForm onSearch={this._onSearch} fetching={fetching} />
           </ActionBar>
-          <Results expanded={displayResults}>
-            <ResultsInner />
-          </Results>
+          <ResultsContainer expanded={displayResults}>
+            <Results results={results} />
+          </ResultsContainer>
         </Well>
       </Main>
     );
   }
 
-  _onSearch = () => {
-    this.setState(() => ({ fetching: true }));
+  _onSearch = async (hostname) => {
+    this.setState(() => ({
+      fetching: true,
+      query: hostname,
+    }));
 
-    setTimeout(() => {
-      this.setState(() => ({ fetching: false, displayResults: true }))
-    }, 1500);
+    const results = await dnsLookup(hostname);
+
+    this.setState(() => ({
+      fetching: false,
+      displayResults: true,
+      results: results
+    }));
   }
 }
 

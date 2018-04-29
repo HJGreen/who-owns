@@ -5,6 +5,7 @@ const Well = styled.section`
   border-radius: 4px;
   background-color: #fff;
   overflow: hidden;
+  max-width: calc(100vw - 64px);
 `;
 
 export default Well;
