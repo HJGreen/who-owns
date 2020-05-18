@@ -1,6 +1,7 @@
-const dns = require('dns');
+// const dns = require('dns');
+import dns from 'dns';
 
-exports.handler = function (event, context, callback) {
+const handler = function (event, context, callback) {
   dns.resolve(event.queryStringParameters.hostname, 'ANY', (err, records) => {
     callback(err, {
       statusCode: 200,
@@ -8,3 +9,5 @@ exports.handler = function (event, context, callback) {
     });
   })
 }
+
+export {handler}
