@@ -1,35 +1,8 @@
 import React, { Component } from 'react';
 
-import ActionBar from './ActionBar';
 import Results from './results/Results';
 import SearchForm from './search/SearchForm';
-import Well from './Well';
 import { dnsLookup } from '../lib/lookup';
-import styled from 'styled-components';
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f5f8fa;
-`;
-
-const PageTitle = styled.h1`
-  font-weight: normal;
-  color: ${(props) => (props.shrink ? '#ccc' : '#333')};
-  font-size: ${(props) => (props.shrink ? '1.25rem' : '1.5rem')};
-  transition: all 0.2s ease-out 0.4s;
-  margin-bottom: 2rem;
-`;
-
-const ResultsContainer = styled.section`
-  max-height: ${(props) => (props.expanded ? '50vh' : '0')}
-  transition: max-height 0.3s ease-out 0.35s;
-  padding: ${(props) => (props.expanded ? '16px' : '0')};
-`;
 
 class App extends Component {
   state = {
@@ -39,17 +12,22 @@ class App extends Component {
   render() {
     const { displayResults, fetching, results } = this.state;
     return (
-      <Main>
-        <PageTitle shrink={displayResults}>Who Owns</PageTitle>
-        <Well>
-          <ActionBar expanded={displayResults}>
-            <SearchForm onSearch={this._onSearch} fetching={fetching} />
-          </ActionBar>
-          <ResultsContainer expanded={displayResults}>
-            <Results results={results} />
-          </ResultsContainer>
-        </Well>
-      </Main>
+      <main className="flex flex-col max-w-2xl mx-auto py-16 px-4">
+        <h1 className="text-teal-800 text-2xl font-medium">Who Owns</h1>
+        <header class="mt-4 rounded-md shadow">
+          <SearchForm onSearch={this._onSearch} fetching={fetching} />
+        </header>
+        {displayResults && (
+          <>
+            <h2 className="mt-4 text-xs uppercase tracking-wide font-semibold text-teal-800">
+              DNS Records
+            </h2>
+            <section className="mt-1 p-4 bg-white rounded-md shadow">
+              <Results results={results} />
+            </section>
+          </>
+        )}
+      </main>
     );
   }
 

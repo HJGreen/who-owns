@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-// import styled from 'styled-components';
-
-import InputGroup from './InputGroup';
-import SearchInput from './SearchInput';
-import SearchButton from './SearchButton';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -11,7 +6,6 @@ class SearchForm extends Component {
     this.state = {
       query: '',
     };
-
     this._onQueryChanged = this._onFieldChange.bind(this, 'query');
   }
 
@@ -19,19 +13,25 @@ class SearchForm extends Component {
     const { query } = this.state;
     const { fetching, style } = this.props;
     return (
-      <form style={style}>
-        <InputGroup>
-          <SearchInput
+      <form style={style} onSubmit={this._onSubmit}>
+        <fieldset className="flex">
+          <input
+            className="w-full h-12 px-4 bg-white text-grey-800 rounded-l-md"
             value={query}
             autoFocus
             placeholder="google.com"
             readOnly={fetching}
             onChange={this._onQueryChanged}
+            type="search"
+            required
           />
-          <SearchButton onClick={this._onSubmit}>
+          <button
+            type="submit"
+            className="text-sm w-12 h-12 font-bold text-white bg-green-600 rounded-r-md flex-shrink-0"
+          >
             {fetching ? '…' : 'Go'}
-          </SearchButton>
-        </InputGroup>
+          </button>
+        </fieldset>
       </form>
     );
   }
