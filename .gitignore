@@ -27,4 +27,4 @@ yarn-error.log*
 lambda/
 
 # tailwind
-tailwind.generated.css
+public/style.css

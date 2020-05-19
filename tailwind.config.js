@@ -1,5 +1,10 @@
 module.exports = {
-  purge: [],
+  purge: [
+    "./src/**/*.html",
+    "./src/**/*.vue",
+    "./src/**/*.jsx",
+    "./public/index.html",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -8,6 +13,7 @@ module.exports = {
       },
     },
   },
+
   variants: {},
   plugins: [],
 };
