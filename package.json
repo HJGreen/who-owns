@@ -16,7 +16,7 @@
     "start": "npm-run-all -p watch:css start-js",
     "start-js": "react-scripts start",
     "build-js": "react-scripts build",
-    "build": "NODE_ENV=production npm-run-all build:css build-js",
+    "build": "npm-run-all build:css build-js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lambda-serve": "netlify-lambda serve lambda-src",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.0",
     "npm-run-all": "^4.1.5",
+    "postcss": "^7.0.30",
     "postcss-cli": "^7.1.1",
     "postcss-nested": "^4.2.1",
     "prettier": "^2.0.5"
