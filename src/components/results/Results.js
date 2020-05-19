@@ -23,7 +23,7 @@ const Results = ({ results }) => {
         {results.map((result) => {
           const normalized = tabulate(result);
           return (
-            <tr>
+            <tr key={normalized.value}>
               <td align="left">{normalized.type}</td>
               <td align="left">{normalized.value}</td>
               <td align="right">{normalized.ttl}</td>
