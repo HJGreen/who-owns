@@ -8,9 +8,13 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "3.4.1",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "tailwindcss": "^1.4.6"
   },
   "scripts": {
+    "build:tailwind": "tailwindcss build src/tailwind.css -o src/tailwind.generated.css",
+    "prestart": "npm run build:tailwind",
+    "prebuild": "npm run build:tailwind",
     "start": "react-scripts start",
     "build": "react-scripts build && yarn run lambda-build",
     "test": "react-scripts test --env=jsdom",

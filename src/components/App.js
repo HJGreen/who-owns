@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { dnsLookup } from '../lib/lookup';
 
-import Well from './Well';
 import ActionBar from './ActionBar';
-import SearchForm from './search/SearchForm';
 import Results from './results/Results';
+import SearchForm from './search/SearchForm';
+import Well from './Well';
+import { dnsLookup } from '../lib/lookup';
+import styled from 'styled-components';
 
 const Main = styled.main`
   display: flex;
