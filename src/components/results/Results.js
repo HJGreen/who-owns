@@ -26,16 +26,22 @@ const Results = ({ results }) => {
   if (!results) return null;
   return (
     <ResultsFade>
-      <table>
-        <thead>{/* <tr><th>Type</th><th>Value</th><th>TTL</th></tr> */}</thead>
+      <table style={{ fontFamily: 'monospace', width: '100%' }}>
+        <thead>
+          <tr>
+            <th align="left">Type</th>
+            <th align="left">Value</th>
+            <th align="right">TTL</th>
+          </tr>
+        </thead>
         <tbody>
           {results.map((result) => {
             const normalized = tabulate(result);
             return (
               <tr>
-                <td>{normalized.type}</td>
-                <td>{normalized.value}</td>
-                <td>{normalized.ttl}</td>
+                <td align="left">{normalized.type}</td>
+                <td align="left">{normalized.value}</td>
+                <td align="right">{normalized.ttl}</td>
               </tr>
             );
           })}
