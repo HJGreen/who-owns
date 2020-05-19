@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <main className="flex flex-col max-w-2xl mx-auto py-16 px-4">
         <h1 className="text-teal-800 text-2xl font-medium">Who Owns</h1>
-        <header class="mt-4 rounded-md shadow">
+        <header className="mt-4 rounded-md shadow">
           <SearchForm onSearch={this._onSearch} fetching={fetching} />
         </header>
         {displayResults && (

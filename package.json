@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "isomorphic-unfetch": "^2.0.0",
-    "netlify-lambda": "^1.6.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "3.4.1",
@@ -18,10 +17,7 @@
     "build-js": "react-scripts build",
     "build": "npm-run-all build:css build-js",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lambda-serve": "netlify-lambda serve lambda-src",
-    "lambda-build": "netlify-lambda build lambda-src",
-    "postinstall": "netlify-lambda install"
+    "eject": "react-scripts eject"
   },
   "devDependencies": {
     "autoprefixer": "^9.8.0",
