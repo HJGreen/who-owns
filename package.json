@@ -19,7 +19,9 @@
     "lambda-build": "netlify-lambda build lambda-src",
     "postinstall": "netlify-lambda install"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

@@ -9,8 +9,8 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
-    }
+      query: '',
+    };
 
     this._onQueryChanged = this._onFieldChange.bind(this, 'query');
   }
@@ -28,26 +28,24 @@ class SearchForm extends Component {
             readOnly={fetching}
             onChange={this._onQueryChanged}
           />
-          <SearchButton
-            onClick={this._onSubmit}
-          >
+          <SearchButton onClick={this._onSubmit}>
             {fetching ? '…' : 'Go'}
           </SearchButton>
         </InputGroup>
       </form>
-    )
+    );
   }
 
   _onFieldChange(field, event) {
     const newState = { [field]: event.target.value };
-    this.setState(() => (newState));
+    this.setState(() => newState);
   }
 
   _onSubmit = (event) => {
     const { query } = this.state;
     event.preventDefault();
     this.props.onSearch(query);
-  }
+  };
 }
 
 export default SearchForm;

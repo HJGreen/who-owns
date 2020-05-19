@@ -6,8 +6,8 @@ const SearchInput = styled.input`
   padding: 0 16px;
   font-size: inherit;
   min-width: 0;
-  background-color: ${props => props.readOnly ? '#f9f9f9' : '#fff'}
-  color: ${props => props.readOnly ? '#999' : '#2d2d2d'}
+  background-color: ${(props) => (props.readOnly ? '#f9f9f9' : '#fff')}
+  color: ${(props) => (props.readOnly ? '#999' : '#2d2d2d')}
   &:focus {
     outline: none;
   }

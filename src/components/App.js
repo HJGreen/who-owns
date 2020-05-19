@@ -14,29 +14,28 @@ const Main = styled.main`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: #F5F8FA;
+  background-color: #f5f8fa;
 `;
 
 const PageTitle = styled.h1`
   font-weight: normal;
-  color: ${props => props.shrink ? '#ccc' : '#333'};;
-  font-size: ${props => props.shrink ? '1.25rem' : '1.5rem'};
+  color: ${(props) => (props.shrink ? '#ccc' : '#333')};
+  font-size: ${(props) => (props.shrink ? '1.25rem' : '1.5rem')};
   transition: all 0.2s ease-out 0.4s;
   margin-bottom: 2rem;
 `;
 
 const ResultsContainer = styled.section`
-  max-height: ${props => props.expanded ? '50vh' : '0'}
+  max-height: ${(props) => (props.expanded ? '50vh' : '0')}
   transition: max-height 0.3s ease-out 0.35s;
-  padding: ${props => props.expanded ? '16px' : '0'};
+  padding: ${(props) => (props.expanded ? '16px' : '0')};
 `;
-
 
 class App extends Component {
   state = {
     displayResults: false,
     fetching: false,
-  }
+  };
   render() {
     const { displayResults, fetching, results } = this.state;
     return (
@@ -65,9 +64,9 @@ class App extends Component {
     this.setState(() => ({
       fetching: false,
       displayResults: true,
-      results: results
+      results: results,
     }));
-  }
+  };
 }
 
 export default App;
